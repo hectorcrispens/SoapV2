@@ -26,7 +26,7 @@ class TransaccionPorUUID implements iNucleoEntidad{
             'separadorRepetidor' => array('name' => 'separadorRepetidor', 'type' => 'xsd:string'),
             'valorBlob' => array('name' => 'valorBlob', 'type' => 'xsd:string'),
             'valorBoolean' => array('name' => 'valorBoolean', 'type' => 'xsd:string'),
-            'valorDate' => array('name' => 'valorDate', 'type' => 'xsd:string'),
+            'valorDate' => array('name' => 'valorDate', 'type' => 'xsd:date'),
             'valorDouble' => array('name' => 'valorDouble', 'type' => 'xsd:string'),
             'valorLong' => array('name' => 'valorLong', 'type' => 'xsd:string'),
             'valorStr' => array('name' => 'valorStr', 'type' => 'xsd:string')
@@ -57,7 +57,7 @@ class TransaccionPorUUID implements iNucleoEntidad{
             '',
             array(
                 'estadoVisibilidad' => array('name' => 'estadoVisibilidad', 'type' => 'xsd:string'),
-                'fechaCreacion' => array('name' => 'fechaCreacion', 'type' => 'xsd:string'),
+                'fechaCreacion' => array('name' => 'fechaCreacion', 'type' => 'xsd:date'),
                 'nombreFormulario' => array('name' => 'nombreFormulario', 'type' => 'xsd:string'),
                 'sistOrigen' => array('name' => 'sistOrigen', 'type' => 'xsd:string'),
                 'uuid' => array('name' => 'uuid', 'type' => 'xsd:string'),
@@ -103,14 +103,28 @@ function execute($codigo){
         $req_trace->fecha = "" . date('Y-m-d H:i:s');
         $id_reg = R::store($req_trace);
 
+        $factory = new FactorySoapClient();
+        $client = $factory->getClient("consultaGEDO");
+        $result = $client->consultarDocumentoDetalle(array(
+            "request" => array(
+                "assignee" => "",
+                "numeroDocumento" => "IF-2018-00003558-GSF-COMPRAS#LIF",
+                "numeroEspecial" => "",
+                "usuarioConsulta" => "USUARIO1"
+            )
+        ));
+
+        $fecha = $result->return->listaHistorial[0]->fechaFin;
        
         $re = new TransaccionPorUUIDDTO();
 
         $re->estadoVisibilidad = "";
-        $re->fechaCreacion = "25/10/2019";
+        $re->fechaCreacion = $fecha;
         $re->nombreFormulario = "FFCC_Caratula Variable_APN_FOITR_v2";
         $re->sistOrigen ="RLM";
         $re->uuid ="3L";
+
+       
         
         array_push($re->valorFormComps, array(
             "etiqueta"=> "organismo",
@@ -181,7 +195,7 @@ function execute($codigo){
             "etiqueta"=> "Rubro",
             "id"=> "5522768L",
             "idFormComp"=> "1753868L",
-            "inputName"=> "rubro",
+            "inputName"=> "rubro_comprar",
             "orden"=> "12L",
             "ordenInterno"=> null,
             "relevanciaBusqueda"=> "1L",
@@ -204,9 +218,59 @@ function execute($codigo){
             "separadorRepetidor"=> null,
             "valorBlob"=> null,
             "valorBoolean"=> null,
-            "valorDate"=> "datetime.datetime(1954, 4, 12, 0, 0, tzinfo=<FixedOffset \"-03=>00\">)",
+            "valorDate"=> $fecha,
             "valorDouble"=> null,
             "valorLong"=> null,
+            "valorStr"=> null
+        ));
+        array_push($re->valorFormComps, array(
+            "etiqueta"=> "tipo_procedimiento",
+            "id"=> "5522845L",
+            "idFormComp"=> "1753869L",
+            "inputName"=> "tipo_procedimiento",
+            "orden"=> "13L",
+            "ordenInterno"=> null,
+            "relevanciaBusqueda"=> "1L",
+            "separadorRepetidor"=> null,
+            "valorBlob"=> null,
+            "valorBoolean"=> null,
+            "valorDate"=> null,
+            "valorDouble"=> null,
+            "valorLong"=> null,
+            "valorStr"=> "un pollito pio"
+        ));
+
+        array_push($re->valorFormComps, array(
+            "etiqueta"=> "observaciones_generales",
+            "id"=> "5522845L",
+            "idFormComp"=> "1753869L",
+            "inputName"=> "observaciones_generales",
+            "orden"=> "13L",
+            "ordenInterno"=> null,
+            "relevanciaBusqueda"=> "1L",
+            "separadorRepetidor"=> null,
+            "valorBlob"=> null,
+            "valorBoolean"=> null,
+            "valorDate"=> null,
+            "valorDouble"=> null,
+            "valorLong"=> null,
+            "valorStr"=> "Observaciones general by proyect"
+        ));
+
+        array_push($re->valorFormComps, array(
+            "etiqueta"=> "anio_contratacion",
+            "id"=> "5522845L",
+            "idFormComp"=> "1753869L",
+            "inputName"=> "anio_contratacion",
+            "orden"=> "13L",
+            "ordenInterno"=> null,
+            "relevanciaBusqueda"=> "1L",
+            "separadorRepetidor"=> null,
+            "valorBlob"=> null,
+            "valorBoolean"=> null,
+            "valorDate"=> null,
+            "valorDouble"=> null,
+            "valorLong"=> 2019,
             "valorStr"=> null
         ));
         

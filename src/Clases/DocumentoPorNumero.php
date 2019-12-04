@@ -115,7 +115,6 @@ class DocumentoPorNumero implements iNucleoEntidad
          * Creamos el Json y reemplazamos los acentos
          */
 
-
         $json = json_encode($result);
         //$json = remplaceAcentos($json);
 

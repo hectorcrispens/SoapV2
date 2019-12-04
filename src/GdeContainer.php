@@ -7,6 +7,7 @@ require __DIR__ .'/Clases/HistorialDePasesDeExpediente.php';
 require __DIR__ .'/Clases/EEDetallado.php';
 require __DIR__ .'/Clases/DocumentoPorNumero.php';
 require __DIR__ .'/Clases/TransaccionPorUUID.php';
+require __DIR__ .'/Clases/DocumentoPdf.php';
 
 class GdeContainer implements iContainerIterator
 {
@@ -21,7 +22,8 @@ class GdeContainer implements iContainerIterator
             "HistorialDePases" => new HistorialDePasesDeExpediente(),
             "CEEDetallado" => new EEDetallado(),
             "DocumentoPorNumero" => new DocumentoPorNumero(),
-            "TransaccionPorUUID" => new TransaccionPorUUID()
+            "TransaccionPorUUID" => new TransaccionPorUUID(),
+            "DocumentoPdf" => new DocumentoPdf()
         );
     }
 

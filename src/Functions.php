@@ -45,3 +45,9 @@ function buscarTransaccionPorUUID($arg){
     //var_dump($Service);
     return $Service->execute($arg);
 }
+function consultarDocumentoPdf($request){
+    $sl = ServiceLocator::getInstance(null);
+    $Service = $sl->container->getService("DocumentoPdf");
+    //var_dump($Service);
+    return $Service->execute($request);
+}
