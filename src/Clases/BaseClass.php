@@ -5,7 +5,7 @@ require_once __DIR__ .'/../interfaces/iNucleoEntidad.php';
 class BaseClass implements iNucleoEntidad{
     
   function AddComplex($server){
-
+    
     $server->wsdl->addComplexType(
         'uno',
         'complexType',

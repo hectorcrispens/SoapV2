@@ -86,6 +86,7 @@ class EEDetallado implements iNucleoEntidad
         /**
          * Preparamos la base de datos y storeamos los datos ingresados en el request 
          * */
+        //$codigo = "EX-2019-00000038-   -GSF-DEPCAP#MINCAP";
 
         $req_trace = R::dispense('tracerequest');
         $req_trace->method = "consultaEEDetallado";

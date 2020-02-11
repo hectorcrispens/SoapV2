@@ -8,6 +8,8 @@ require __DIR__ .'/Clases/EEDetallado.php';
 require __DIR__ .'/Clases/DocumentoPorNumero.php';
 require __DIR__ .'/Clases/TransaccionPorUUID.php';
 require __DIR__ .'/Clases/DocumentoPdf.php';
+require __DIR__ .'/Clases/DatosCaratulaVariable.php';
+require __DIR__ .'/Clases/DocumentoDetalle.php';
 
 class GdeContainer implements iContainerIterator
 {
@@ -23,7 +25,9 @@ class GdeContainer implements iContainerIterator
             "CEEDetallado" => new EEDetallado(),
             "DocumentoPorNumero" => new DocumentoPorNumero(),
             "TransaccionPorUUID" => new TransaccionPorUUID(),
-            "DocumentoPdf" => new DocumentoPdf()
+            "DocumentoPdf" => new DocumentoPdf(),
+            "CaratulaVariable" => new DatosCaratulaVariable(),
+            "DocumentoDetalle" => new DocumentoDetalle()
         );
     }
 

@@ -1,2 +1,0 @@
------------------------------json sin utf8-----------------------------------------
-{"return":{"listaDatosTarea":{"codigoExpediente":"EX-2018-00003600-   -GSF-COMPRAS#LIF","codigoTrata":"GSF000002","descripcionTrata":"","estado":"Tramitación","fechaModificacion":"08\/11\/2018 14:19:53","motivo":"pase a quien corresponda","usuarioAnterior":"USUARIO1"}}}

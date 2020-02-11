@@ -51,3 +51,16 @@ function consultarDocumentoPdf($request){
     //var_dump($Service);
     return $Service->execute($request);
 }
+
+function obtenerDatosCaratulaVariable($codigoEE, $usuario){
+    $sl = ServiceLocator::getInstance(null);
+    $Service = $sl->container->getService("CaratulaVariable");
+    return $Service->execute(array("codigoEE" => $codigoEE, "usuario" => $usuario));
+}
+
+function consultarDocumentoDetalle($request){
+    $sl = ServiceLocator::getInstance(null);
+    $Service = $sl->container->getService("DocumentoDetalle");
+    //var_dump($Service);
+    return $Service->execute($request);
+}

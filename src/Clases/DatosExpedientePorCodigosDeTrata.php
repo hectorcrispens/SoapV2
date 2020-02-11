@@ -121,7 +121,7 @@ function execute($e)
      $result = $client->consultarDatosExpedientePorCodigosDeTrata(array(
      "listaDeCodigosTrata" => $codigo_trata,
      "expedienteEstado" => $estado,
-     "expedienteUsuarioAsignado" => $usuario));
+     "expedienteUsuarioAsignado" => ""));
 
      if (is_soap_fault($result)) {
       
@@ -160,17 +160,21 @@ function execute($e)
     
 
       $re = new DatosExpedientePorCodigoDeTrataDTO();
-      
-      $arr =$lista->listaDatosTarea;
+ 
+     
+       foreach($lista->listaDatosTarea as $arr){
+     
         array_push($re->listaDatosTarea, array(
-          "codigoExpediente" => $arr->codigoExpediente,
-          "codigoTrata" => $arr->codigoTrata,
-          "descripcionTrata" => $arr->descripcionTrata,
-          "estado" => $arr->estado,
-          "fechaModificacion" => $arr->fechaModificacion,
-          "motivo" => $arr->motivo,
-          "usuarioAnterior" => $arr->usuarioAnterior
-      ));
+            "codigoExpediente" => $arr->codigoExpediente,
+            "codigoTrata" => $arr->codigoTrata,
+            "descripcionTrata" => $arr->descripcionTrata,
+            "estado" => $arr->estado,
+            "fechaModificacion" => $arr->fechaModificacion,
+            "motivo" => $arr->motivo,
+            "usuarioAnterior" => $arr->usuarioAnterior
+        ));
+       }
+       
 
      
     
