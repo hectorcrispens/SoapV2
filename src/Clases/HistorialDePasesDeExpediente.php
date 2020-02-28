@@ -242,7 +242,7 @@ $re = new HistorialDePasesDTO();
  */
 
 
-
+//var_dump($response->documentosVinculados);
 foreach($response->documentosVinculados as $e){
     $numEsp = null;
     $tipoD = null;
@@ -253,6 +253,7 @@ $numEsp = $e->numeroEspecialDocumento;
 if(array_key_exists("tipoDocumento", $e)){
     $tipoD = $e->tipoDocumento;
     }
+
 array_push($re->documentosVinculados, array(
   "fechaCreacion" => $e->fechaCreacion,
   "fechavinculacionDefinitiva" => $e->fechavinculacionDefinitiva,
@@ -266,28 +267,6 @@ array_push($re->documentosVinculados, array(
 ));
 }
 
-/**
- * Expedientes Asociados
- */
-/*
-$value = $response->expedientesAsociados;
-foreach($value as $documentoV){
-array_push($this->expedientesAsociados, $documentoV);
-}
-
-/**
- * Documentos Fusion Asociados
- */
-/*
-$value = $response->expedientesFusionAsociados;
-foreach($value as $documentoV){
-array_push($this->expedientesFusionAsociados, $documentoV);
-}
-
-/**
- * Expedientes Vinculados
- */
-/*
 $value = $response->expedientesVinculados;
 foreach($value as $documentoV){
 array_push($this->expedientesVinculados, $documentoV);
@@ -297,8 +276,8 @@ array_push($this->expedientesVinculados, $documentoV);
  * Historial de Operacion
  */
 
-
-foreach($response->historialDeOperacion as $e){
+//var_dump($response->historialDeOperacion);
+$e = $response->historialDeOperacion;
 array_push($re->historialDeOperacion, array(
   "destinatario" => $e->destinatario,
   "estado" => $e->estado,
@@ -309,7 +288,7 @@ array_push($re->historialDeOperacion, array(
   "tipoOperacion" => $e->tipoOperacion,
   "usuario" => $e->usuario
 ));
-}
+
 
 
 

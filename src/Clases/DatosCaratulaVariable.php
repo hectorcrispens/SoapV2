@@ -137,6 +137,7 @@ function execute($codigo){
 
    foreach($result->campos as $campoItem){
        if(strcmp($campoItem->campo, "Sección")==0) $campoItem->valor = "primera";
+       if(strcmp($campoItem->campo, "Rubro")==0) $campoItem->valor = "avisos_oficiales";
     array_push($entidad->campos, array("valor" => $campoItem->valor, "campo" => $campoItem->campo));
    }
 
