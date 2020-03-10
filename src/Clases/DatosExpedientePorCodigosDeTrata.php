@@ -161,7 +161,7 @@ function execute($e)
 
       $re = new DatosExpedientePorCodigoDeTrataDTO();
  
-     
+     //var_dump($lista->listaDatosTarea);
        foreach($lista->listaDatosTarea as $arr){
      
         array_push($re->listaDatosTarea, array(
